@@ -1,19 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.github.bschramke.android.testing.sample.redux.CalculatoreState" />
+        <variable name="viewModel" type="com.github.bschramke.android.testing.sample.CalculatorViewModel"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CalculatorActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number|numberSigned|numberDecimal"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="viewEnd"
+        android:text="@{viewModel.state.text}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="8 + 5 = 13"/>
 
+    <GridLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:columnCount="4"
+        android:rowCount="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText">
+
+        <!-- Row #0 -->
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:onClick="@{viewModel::onClick}"
+            android:text="C"/>
+
+        <Button
+            android:id="@+id/btn_div"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:onClick="@{viewModel::onClick}"
+            android:text="\u00F7"/>
+
+        <Button
+            android:id="@+id/btn_mul"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:onClick="@{viewModel::onClick}"
+            android:text="\u00D7"/>
+
+        <Button
+            android:id="@+id/btn_erase"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:onClick="@{viewModel::onClick}"
+            android:text="\u232B"/>
+
+        <!-- Row #1 -->
+        <Button
+            android:id="@+id/btn_7"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:onClick="@{viewModel::onClick}"
+            android:text="7"/>
+
+        <Button
+            android:id="@+id/btn_8"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:onClick="@{viewModel::onClick}"
+            android:text="8"/>
+
+        <Button
+            android:id="@+id/btn_9"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:onClick="@{viewModel::onClick}"
+            android:text="9"/>
+
+        <Button
+            android:id="@+id/btn_minus"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:onClick="@{viewModel::onClick}"
+            android:text="\u2212"/>
+
+        <!-- Row #2 -->
+        <Button
+            android:id="@+id/btn_4"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:onClick="@{viewModel::onClick}"
+            android:text="4"/>
+
+        <Button
+            android:id="@+id/btn_5"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:onClick="@{viewModel::onClick}"
+            android:text="5"/>
+
+        <Button
+            android:id="@+id/btn_6"
+            android:layout_column="2"
+            android:layout_row="2"
+            android:onClick="@{viewModel::onClick}"
+            android:text="6"/>
+
+        <Button
+            android:id="@+id/btn_plus"
+            android:layout_column="3"
+            android:layout_row="2"
+            android:onClick="@{viewModel::onClick}"
+            android:text="\u002B"/>
+
+        <!-- Row #3 -->
+        <Button
+            android:id="@+id/btn_1"
+            android:layout_column="0"
+            android:layout_row="3"
+            android:onClick="@{viewModel::onClick}"
+            android:text="1"/>
+
+        <Button
+            android:id="@+id/btn_2"
+            android:layout_column="1"
+            android:layout_row="3"
+            android:onClick="@{viewModel::onClick}"
+            android:text="2"/>
+
+        <Button
+            android:id="@+id/btn_3"
+            android:layout_column="2"
+            android:layout_row="3"
+            android:onClick="@{viewModel::onClick}"
+            android:text="3"/>
+
+        <Button
+            android:id="@+id/btn_sum"
+            android:layout_column="3"
+            android:layout_row="3"
+            android:layout_rowSpan="2"
+            android:onClick="@{viewModel::onClick}"
+            android:text="\u003D"/>
+
+        <!-- Row #4 -->
+        <Button
+            android:id="@+id/btn_percent"
+            android:layout_column="0"
+            android:layout_row="4"
+            android:onClick="@{viewModel::onClick}"
+            android:text="%"/>
+
+        <Button
+            android:id="@+id/btn_0"
+            android:layout_column="1"
+            android:layout_row="4"
+            android:onClick="@{viewModel::onClick}"
+            android:text="0"/>
+
+        <Button
+            android:id="@+id/btn_comma"
+            android:layout_column="2"
+            android:layout_row="4"
+            android:onClick="@{viewModel::onClick}"
+            android:text=","/>
+
+    </GridLayout>
 </android.support.constraint.ConstraintLayout>
+</layout>

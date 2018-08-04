@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     buildToolsVersion '27.0.3'
@@ -19,7 +20,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
-
+    dataBinding {
+        enabled true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -35,12 +38,24 @@ android {
 
 }
 
+ext.tatarkaReduxVersion = '0.10'
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    implementation "me.tatarka.redux:redux-core:$tatarkaReduxVersion"
+    implementation "me.tatarka.redux:redux-android:$tatarkaReduxVersion"
+    implementation "me.tatarka.redux:redux-android-lifecycle:$tatarkaReduxVersion"
+    implementation "me.tatarka.redux:redux-thunk:$tatarkaReduxVersion"
+    implementation "me.tatarka.redux:redux-rx2:$tatarkaReduxVersion"
+
     testImplementation 'junit:junit:4.12'
+
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    kapt "com.android.databinding:compiler:$androidPluginVersion"
 }
