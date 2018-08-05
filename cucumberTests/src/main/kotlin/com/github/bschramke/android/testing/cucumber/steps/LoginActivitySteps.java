@@ -1,13 +1,14 @@
-package com.github.bschramke.android.testing.cucumber;
+package com.github.bschramke.android.testing.cucumber.steps;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.app.AppCompatActivity;
 
 import com.github.bschramke.android.testing.sample.CalculatorActivity;
 
 import org.junit.Rule;
+import org.junit.runner.RunWith;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
@@ -16,15 +17,18 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static org.assertj.android.api.Assertions.assertThat;
+
 public class LoginActivitySteps {
+
     @Rule
-    public ActivityTestRule<CalculatorActivity> activityTestRule = new ActivityTestRule<>(CalculatorActivity.class);
+    public ActivityTestRule<CalculatorActivity> activityTestRule = new ActivityTestRule<>(CalculatorActivity.class, false, false);
     private AppCompatActivity activity;
 
     @Before
     public void setup() {
-        activityTestRule.launchActivity(new Intent());
-        activity = activityTestRule.getActivity();
+        activity = activityTestRule.launchActivity(new Intent());
+        assertThat(activity).isNotNull();
     }
 
     @After

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.github.bschramke.android.testing.cucumber">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <!--
     It is essential to use CucumberInstrumentation as instrumentation.
     targetPackage is the package name of the application you want to test; In this case
@@ -9,6 +11,6 @@
     test itself.
     -->
     <instrumentation
-        android:name="com.github.bschramke.android.testing.cucumber.support.CucumberInstrumentation"
+        android:name="com.github.bschramke.android.testing.cucumber.support.CucumberAndroidInstrumentation"
         android:targetPackage="com.github.bschramke.android.testing.sample"/>
 </manifest>
