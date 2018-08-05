@@ -13,7 +13,6 @@ import cucumber.api.android.CucumberInstrumentationCore;
         features = "features",
         glue = "com.github.bschramke.android.testing.cucumber",
         plugin = { "pretty"})
-@RunWith(AndroidJUnit4.class)
 public class CucumberInstrumentation extends MonitoringInstrumentation {
     private final CucumberInstrumentationCore instrumentationCore = new CucumberInstrumentationCore(this);
 

@@ -56,8 +56,9 @@ dependencies {
     implementation "me.tatarka.redux:redux-rx2:$tatarkaReduxVersion"
 
     testImplementation 'junit:junit:4.12'
-
+    // Android Testing Support Library's runner and rules and hamcrest matchers
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     kapt "com.android.databinding:compiler:$androidPluginVersion"
