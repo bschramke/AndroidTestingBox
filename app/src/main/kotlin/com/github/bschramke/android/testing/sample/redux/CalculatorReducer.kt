@@ -2,7 +2,7 @@ package com.github.bschramke.android.testing.sample.redux
 
 import me.tatarka.redux.Reducer
 
-class CalculatorReducer:Reducer<CalculatorAction,CalculatoreState>{
+class CalculatorReducer:Reducer<CalculatorAction,CalculatoreState> {
     override fun reduce(action: CalculatorAction, currentState: CalculatoreState): CalculatoreState {
         return when(action) {
             is CalculatorAction.CLEAR -> CalculatoreState()
