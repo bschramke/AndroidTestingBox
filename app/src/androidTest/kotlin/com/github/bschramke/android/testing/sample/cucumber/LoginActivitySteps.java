@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.github.bschramke.android.testing.sample.CalculatorActivity;
 import com.github.bschramke.android.testing.sample.R;
+import com.github.bschramke.android.testing.sample.actions.ScreenshotAction;
 import com.squareup.spoon.Spoon;
 
 import org.junit.Rule;
@@ -49,6 +50,8 @@ public class LoginActivitySteps {
                 .isNotNull()
                 .isInstanceOf(CalculatorActivity.class);
         onView(withId(R.id.calculatorDisplay)).check(matches(isDisplayingAtLeast(90)));
+        ScreenshotSteps.takeScreenshot("firstShot");
+        ScreenshotSteps.takeScreenshot("secondShot");
     }
 
     @When("^I press the button (\\d+)$")
@@ -56,6 +59,8 @@ public class LoginActivitySteps {
         onView(withText(String.valueOf(arg0)))
                 .check(matches(isDisplayingAtLeast(90)))
                 .perform(click());
+        ScreenshotSteps.takeScreenshot("anotherShot");
+
     }
 
     @Then("^I should see the value (\\d+) displayed$")

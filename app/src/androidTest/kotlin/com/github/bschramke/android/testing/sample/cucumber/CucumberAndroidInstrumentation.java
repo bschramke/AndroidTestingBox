@@ -17,7 +17,8 @@ import cucumber.api.android.CucumberInstrumentationCore;
 @CucumberOptions(
         features = "features",
         glue = "com.github.bschramke.android.testing.sample.cucumber",
-        plugin = {"pretty", // Cucumber report formats and location to store them in phone/emulator
+        plugin = {"pretty",
+                // Cucumber report formats and location to store them in phone/emulator
                 "html:/mnt/sdcard/cucumber-reports/cucumber-html-report",
                 "json:/mnt/sdcard/cucumber-reports/cucumber.json",
                 "junit:/mnt/sdcard/cucumber-reports/cucumber.xml"

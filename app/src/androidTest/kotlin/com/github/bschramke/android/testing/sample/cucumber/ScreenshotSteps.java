@@ -77,7 +77,6 @@ public class ScreenshotSteps {
             final byte fileContent[] = new byte[(int) screenshot.length()];
             final int readImageBytes = screenshotStream.read(fileContent); // Read data from input image file into an array of bytes
             if (readImageBytes != -1) {
-                scenario.write("Ein Test");
                 scenario.embed(fileContent, "image/png"); // Embed the screenshot in the report under current test step
             }
         } catch (final IOException ioe) {
