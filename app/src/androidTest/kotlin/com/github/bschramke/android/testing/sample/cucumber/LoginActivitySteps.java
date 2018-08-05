@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.github.bschramke.android.testing.sample.CalculatorActivity;
 import com.github.bschramke.android.testing.sample.R;
+import com.squareup.spoon.Spoon;
 
 import org.junit.Rule;
+
+import java.io.File;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.After;

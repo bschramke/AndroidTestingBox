@@ -74,7 +74,27 @@ dependencies {
     androidTestImplementation 'io.cucumber:cucumber-android:3.0.2'
     androidTestImplementation 'io.cucumber:cucumber-picocontainer:3.0.2'
 
+    // Screenshots
+    androidTestImplementation 'com.squareup.spoon:spoon-client:1.7.1'
+
     kapt "com.android.databinding:compiler:$androidPluginVersion"
+}
+
+// Task to retrieve Cucumber test reports
+// The report path in this task depends on the path used in CucumberTestCase.java under @CucumberOptions
+// The report path for emulator and real device differ depending on read permissions
+// and SD-card presence respectively
+gradle.taskGraph.afterTask { task, state ->
+    if ((task == connectedAndroidTest) || (task == connectedCheck)) {
+        def reportDir = new File(project.buildDir, "cucumber-reports")
+        if (!reportDir.exists()) {
+            reportDir.mkdirs()
+        }
+        println 'Retrieving Cucumber test report to ' + project.buildDir
+        def processBuilder = new ProcessBuilder(
+                ['adb', 'pull', '/mnt/sdcard/cucumber-reports/', reportDir.getAbsolutePath()])
+        processBuilder.start()
+    }
 }
 
 def getTestTags() {

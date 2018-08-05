@@ -12,11 +12,18 @@ import cucumber.api.android.CucumberInstrumentationCore;
  * This class must be in a different package than the glue code
  * (this class is in '...cucumber.runner' and glue is in '...cucumber.steps')
  *
- *  {@see https://github.com/sebaslogen/CleanGUITestArchitecture/blob/master/app/src/androidTest/java/com/neoranga55/cleanguitestarchitecture/cucumber/runner/CucumberTestRunner.java}
+ *  {@see https://github.com/emmasuzuki/CucumberEspressoDemo}
  */
 @CucumberOptions(
         features = "features",
-        glue = "com.github.bschramke.android.testing.sample.cucumber")
+        glue = "com.github.bschramke.android.testing.sample.cucumber",
+        plugin = {"pretty", // Cucumber report formats and location to store them in phone/emulator
+                "html:/mnt/sdcard/cucumber-reports/cucumber-html-report",
+                "json:/mnt/sdcard/cucumber-reports/cucumber.json",
+                "junit:/mnt/sdcard/cucumber-reports/cucumber.xml"
+                // Note: if you don't have write access to /mnt/sdcard/
+        }
+)
 public class CucumberAndroidInstrumentation extends MonitoringInstrumentation{
     private final CucumberInstrumentationCore instrumentationCore = new CucumberInstrumentationCore(this);
 
