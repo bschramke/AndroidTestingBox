@@ -21,18 +21,26 @@ android {
             useSupportLibrary = true
         }
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testApplicationId "com.github.bschramke.android.testing.sample.cucumber"
+        testInstrumentationRunner "com.github.bschramke.android.testing.sample.cucumber.CucumberAndroidInstrumentation"
     }
     dataBinding {
         enabled true
     }
     buildTypes {
+        debug {
+            testCoverageEnabled true
+            buildConfigField "String", "TEST_TAGS", "\"${getTestTags()}\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     sourceSets {
+        androidTest {
+            assets.srcDirs = ['src/androidTest/assets']
+        }
         //ensure that each java sourceSet also contains the kotlin folder
         all { sourceSet ->
             sourceSet.java.srcDir("src/${sourceSet.name}/kotlin")
@@ -60,6 +68,15 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'org.assertj:assertj-core:3.10.0'
+    androidTestImplementation 'com.squareup.assertj:assertj-android:1.2.0'
+
+    androidTestImplementation 'io.cucumber:cucumber-android:3.0.2'
+    androidTestImplementation 'io.cucumber:cucumber-picocontainer:3.0.2'
 
     kapt "com.android.databinding:compiler:$androidPluginVersion"
+}
+
+def getTestTags() {
+    return project.hasProperty("tags") ? project.getProperties().get("tags") : ""
 }
