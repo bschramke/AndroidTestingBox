@@ -2,19 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'io.qameta.allure'
-
-allure {
-    autoconfigure = true
-    version = '2.7.0'
-
-    resultsDir = file('/path/to/project/module1/build/allure-results')
-    reportDir = file('build/allure-results')
-
-    useCucumberJVM {
-        version = '2.0-BETA10'
-    }
-}
 
 android {
     buildToolsVersion '27.0.3'
