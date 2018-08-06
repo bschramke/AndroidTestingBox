@@ -1,5 +1,5 @@
 include ':app'
-include ':cucumberTests', ':junit4Tests'
+include ':cucumberTests', ':jgivenTest'
 
 // always good to nail down the root project name, because
 // the root directory name may be different in some envs (e.g. CI)

@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidTestingBox.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidTestingBox.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/cucumberTests/cucumberTests.iml" filepath="$PROJECT_DIR$/cucumberTests/cucumberTests.iml" />
-      <module fileurl="file://$PROJECT_DIR$/junit4Tests/junit4Tests.iml" filepath="$PROJECT_DIR$/junit4Tests/junit4Tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jgivenTest/jgivenTest.iml" filepath="$PROJECT_DIR$/jgivenTest/jgivenTest.iml" />
     </modules>
   </component>
 </project>
