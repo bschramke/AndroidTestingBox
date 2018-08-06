@@ -9,6 +9,6 @@
     test itself.
     -->
     <instrumentation
-        android:name="com.github.bschramke.android.testing.cucumber.support.CucumberInstrumentation"
+        android:name="com.github.bschramke.android.testing.sample.test.support.CucumberInstrumentation"
         android:targetPackage="com.github.bschramke.android.testing.sample"/>
 </manifest>
